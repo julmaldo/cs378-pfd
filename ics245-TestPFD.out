@@ -1,16 +1,20 @@
-==20876== Memcheck, a memory error detector
-==20876== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==20876== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==20876== Command: ./TestPFD
-==20876== 
+==21419== Memcheck, a memory error detector
+==21419== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==21419== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==21419== Command: ./TestPFD
+==21419== 
 Running main() from gtest_main.cc
-[==========] Running 19 tests from 1 test case.
+[==========] Running 21 tests from 1 test case.
 [----------] Global test environment set-up.
-[----------] 19 tests from PFDFixture
+[----------] 21 tests from PFDFixture
 [ RUN      ] PFDFixture.solve
-[       OK ] PFDFixture.solve (70 ms)
+[       OK ] PFDFixture.solve (71 ms)
 [ RUN      ] PFDFixture.update
 [       OK ] PFDFixture.update (2 ms)
+[ RUN      ] PFDFixture.update2
+[       OK ] PFDFixture.update2 (2 ms)
+[ RUN      ] PFDFixture.update3
+[       OK ] PFDFixture.update3 (1 ms)
 [ RUN      ] PFDFixture.read_first
 [       OK ] PFDFixture.read_first (2 ms)
 [ RUN      ] PFDFixture.read_first2
@@ -22,21 +26,21 @@ Running main() from gtest_main.cc
 [ RUN      ] PFDFixture.read_rest
 [       OK ] PFDFixture.read_rest (9 ms)
 [ RUN      ] PFDFixture.read_rest2
-[       OK ] PFDFixture.read_rest2 (3 ms)
+[       OK ] PFDFixture.read_rest2 (4 ms)
 [ RUN      ] PFDFixture.read_rest3
-[       OK ] PFDFixture.read_rest3 (4 ms)
+[       OK ] PFDFixture.read_rest3 (3 ms)
 [ RUN      ] PFDFixture.read_rest4
 [       OK ] PFDFixture.read_rest4 (4 ms)
 [ RUN      ] PFDFixture.build_adj
-[       OK ] PFDFixture.build_adj (2 ms)
+[       OK ] PFDFixture.build_adj (3 ms)
 [ RUN      ] PFDFixture.build_adj1
-[       OK ] PFDFixture.build_adj1 (3 ms)
+[       OK ] PFDFixture.build_adj1 (2 ms)
 [ RUN      ] PFDFixture.build_adj2
 [       OK ] PFDFixture.build_adj2 (3 ms)
 [ RUN      ] PFDFixture.build_adj3
-[       OK ] PFDFixture.build_adj3 (2 ms)
+[       OK ] PFDFixture.build_adj3 (3 ms)
 [ RUN      ] PFDFixture.eval_1
-[       OK ] PFDFixture.eval_1 (2 ms)
+[       OK ] PFDFixture.eval_1 (1 ms)
 [ RUN      ] PFDFixture.print
 [       OK ] PFDFixture.print (4 ms)
 [ RUN      ] PFDFixture.print2
@@ -44,26 +48,26 @@ Running main() from gtest_main.cc
 [ RUN      ] PFDFixture.print3
 [       OK ] PFDFixture.print3 (4 ms)
 [ RUN      ] PFDFixture.print4
-[       OK ] PFDFixture.print4 (3 ms)
-[----------] 19 tests from PFDFixture (137 ms total)
+[       OK ] PFDFixture.print4 (4 ms)
+[----------] 21 tests from PFDFixture (141 ms total)
 
 [----------] Global test environment tear-down
-[==========] 19 tests from 1 test case ran. (164 ms total)
-[  PASSED  ] 19 tests.
-==20876== 
-==20876== HEAP SUMMARY:
-==20876==     in use at exit: 0 bytes in 0 blocks
-==20876==   total heap usage: 710 allocs, 710 frees, 82,892 bytes allocated
-==20876== 
-==20876== All heap blocks were freed -- no leaks are possible
-==20876== 
-==20876== For counts of detected and suppressed errors, rerun with: -v
-==20876== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 21 tests from 1 test case ran. (170 ms total)
+[  PASSED  ] 21 tests.
+==21419== 
+==21419== HEAP SUMMARY:
+==21419==     in use at exit: 0 bytes in 0 blocks
+==21419==   total heap usage: 740 allocs, 740 frees, 85,912 bytes allocated
+==21419== 
+==21419== All heap blocks were freed -- no leaks are possible
+==21419== 
+==21419== For counts of detected and suppressed errors, rerun with: -v
+==21419== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'PFD.c++'
-Lines executed:100.00% of 76
-Branches executed:98.41% of 126
-Taken at least once:59.52% of 126
-Calls executed:85.95% of 121
+Lines executed:100.00% of 75
+Branches executed:98.46% of 130
+Taken at least once:60.00% of 130
+Calls executed:86.07% of 122
 Creating 'PFD.c++.gcov'
 
 File '/usr/include/c++/4.8/iostream'
@@ -283,17 +287,17 @@ No calls
 Creating 'char_traits.h.gcov'
 
 File 'TestPFD.c++'
-Lines executed:100.00% of 82
-Branches executed:69.23% of 494
-Taken at least once:34.62% of 494
-Calls executed:58.15% of 638
+Lines executed:100.00% of 86
+Branches executed:68.30% of 530
+Taken at least once:34.15% of 530
+Calls executed:57.92% of 682
 Creating 'TestPFD.c++.gcov'
 
 File '/usr/include/gtest/internal/gtest-internal.h'
 Lines executed:80.00% of 5
-Branches executed:100.00% of 78
-Taken at least once:50.00% of 78
-Calls executed:73.55% of 155
+Branches executed:100.00% of 86
+Taken at least once:50.00% of 86
+Calls executed:73.68% of 171
 Creating 'gtest-internal.h.gcov'
 
 File '/usr/include/c++/4.8/iostream'
