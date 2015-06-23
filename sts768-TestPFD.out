@@ -1,8 +1,8 @@
-==13032== Memcheck, a memory error detector
-==13032== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==13032== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==13032== Command: ./TestPFD
-==13032== 
+==7338== Memcheck, a memory error detector
+==7338== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==7338== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==7338== Command: ./TestPFD
+==7338== 
 Running main() from gtest_main.cc
 [==========] Running 15 tests from 1 test case.
 [----------] Global test environment set-up.
@@ -14,43 +14,43 @@ Running main() from gtest_main.cc
 [ RUN      ] PFDFixture.firstLine_3
 [       OK ] PFDFixture.firstLine_3 (4 ms)
 [ RUN      ] PFDFixture.pfd_rule_1
-[       OK ] PFDFixture.pfd_rule_1 (11 ms)
+[       OK ] PFDFixture.pfd_rule_1 (12 ms)
 [ RUN      ] PFDFixture.pfd_rule_2
 [       OK ] PFDFixture.pfd_rule_2 (8 ms)
 [ RUN      ] PFDFixture.pfd_rule_3
 [       OK ] PFDFixture.pfd_rule_3 (6 ms)
 [ RUN      ] PFDFixture.pfd_rule_4
-[       OK ] PFDFixture.pfd_rule_4 (4 ms)
+[       OK ] PFDFixture.pfd_rule_4 (3 ms)
 [ RUN      ] PFDFixture.pfd_rule_5
 [       OK ] PFDFixture.pfd_rule_5 (6 ms)
 [ RUN      ] PFDFixture.eval_1
-[       OK ] PFDFixture.eval_1 (52 ms)
+[       OK ] PFDFixture.eval_1 (51 ms)
 [ RUN      ] PFDFixture.eval_2
-[       OK ] PFDFixture.eval_2 (8 ms)
+[       OK ] PFDFixture.eval_2 (9 ms)
 [ RUN      ] PFDFixture.print_1
-[       OK ] PFDFixture.print_1 (11 ms)
+[       OK ] PFDFixture.print_1 (10 ms)
 [ RUN      ] PFDFixture.solve_1
 [       OK ] PFDFixture.solve_1 (9 ms)
 [ RUN      ] PFDFixture.solve_2
 [       OK ] PFDFixture.solve_2 (5 ms)
 [ RUN      ] PFDFixture.solve_3
-[       OK ] PFDFixture.solve_3 (4 ms)
+[       OK ] PFDFixture.solve_3 (5 ms)
 [ RUN      ] PFDFixture.solve_4
-[       OK ] PFDFixture.solve_4 (4 ms)
-[----------] 15 tests from PFDFixture (185 ms total)
+[       OK ] PFDFixture.solve_4 (3 ms)
+[----------] 15 tests from PFDFixture (186 ms total)
 
 [----------] Global test environment tear-down
-[==========] 15 tests from 1 test case ran. (213 ms total)
+[==========] 15 tests from 1 test case ran. (215 ms total)
 [  PASSED  ] 15 tests.
-==13032== 
-==13032== HEAP SUMMARY:
-==13032==     in use at exit: 0 bytes in 0 blocks
-==13032==   total heap usage: 653 allocs, 653 frees, 77,033 bytes allocated
-==13032== 
-==13032== All heap blocks were freed -- no leaks are possible
-==13032== 
-==13032== For counts of detected and suppressed errors, rerun with: -v
-==13032== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==7338== 
+==7338== HEAP SUMMARY:
+==7338==     in use at exit: 0 bytes in 0 blocks
+==7338==   total heap usage: 653 allocs, 653 frees, 77,033 bytes allocated
+==7338== 
+==7338== All heap blocks were freed -- no leaks are possible
+==7338== 
+==7338== For counts of detected and suppressed errors, rerun with: -v
+==7338== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'PFD.c++'
 Lines executed:100.00% of 58
 Branches executed:100.00% of 122
