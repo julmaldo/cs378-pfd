@@ -1,0 +1,35 @@
+Running main() from gtest_main.cc
+[==========] Running 13 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 13 tests from PFDFixture
+[ RUN      ] PFDFixture.read_0
+[       OK ] PFDFixture.read_0 (0 ms)
+[ RUN      ] PFDFixture.read_1
+[       OK ] PFDFixture.read_1 (0 ms)
+[ RUN      ] PFDFixture.read_2
+[       OK ] PFDFixture.read_2 (0 ms)
+[ RUN      ] PFDFixture.eval_0
+[       OK ] PFDFixture.eval_0 (0 ms)
+[ RUN      ] PFDFixture.eval_1
+[       OK ] PFDFixture.eval_1 (0 ms)
+[ RUN      ] PFDFixture.print_0
+[       OK ] PFDFixture.print_0 (0 ms)
+[ RUN      ] PFDFixture.print_1
+[       OK ] PFDFixture.print_1 (0 ms)
+[ RUN      ] PFDFixture.print_2
+[       OK ] PFDFixture.print_2 (0 ms)
+[ RUN      ] PFDFixture.print_3
+[       OK ] PFDFixture.print_3 (0 ms)
+[ RUN      ] PFDFixture.print_4
+[       OK ] PFDFixture.print_4 (0 ms)
+[ RUN      ] PFDFixture.solve_0
+[       OK ] PFDFixture.solve_0 (0 ms)
+[ RUN      ] PFDFixture.solve_1
+[       OK ] PFDFixture.solve_1 (0 ms)
+[ RUN      ] PFDFixture.solve_2
+[       OK ] PFDFixture.solve_2 (2 ms)
+[----------] 13 tests from PFDFixture (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 13 tests from 1 test case ran. (2 ms total)
+[  PASSED  ] 13 tests.
