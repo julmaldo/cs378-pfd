@@ -31,6 +31,63 @@ using namespace std;
 // TestPFD
 // -------
 
+// ----------------
+// matrix_fill_zero
+// ----------------
+TEST(PFDFixture,matrix_fill_zero_1){
+	ostringstream w;
+	vector<vector<int> > testmatrix(2, vector<int>(2)); 
+
+	for(int i = 0; i < 2; ++i){
+
+		for(int j = 0; j < 2; ++j){
+
+			testmatrix[i][j] = 1;
+		}
+	}
+
+	testmatrix = matrix_fill_zero(2, testmatrix);
+	print_matrix(w, testmatrix);
+
+	ASSERT_EQ("(0)(0)\n(0)(0)\n", w.str());
+}
+
+TEST(PFDFixture,matrix_fill_zero_2){
+	ostringstream w;
+	vector<vector<int> > testmatrix(2, vector<int>(2)); 
+
+	for(int i = 0; i < 2; ++i){
+
+		for(int j = 0; j < 2; ++j){
+
+			testmatrix[i][j] = 2;
+		}
+	}
+
+	testmatrix = matrix_fill_zero(2, testmatrix);
+	print_matrix(w, testmatrix);
+
+	ASSERT_EQ("(0)(0)\n(0)(0)\n", w.str());
+}
+
+TEST(PFDFixture,matrix_fill_zero_3){
+	ostringstream w;
+	vector<vector<int> > testmatrix(2, vector<int>(2)); 
+
+	for(int i = 0; i < 2; ++i){
+
+		for(int j = 0; j < 2; ++j){
+
+			testmatrix[i][j] = 3;
+		}
+	}
+
+	testmatrix = matrix_fill_zero(2, testmatrix);
+	print_matrix(w, testmatrix);
+
+	ASSERT_EQ("(0)(0)\n(0)(0)\n", w.str());
+}
+
 // ---------
 // pfd_solve
 // ---------
@@ -40,7 +97,17 @@ TEST(PFDFixture, solve1) {
     pfd_solve(r, w);
     ASSERT_EQ("1 5 3 2 4", w.str());}
 
+TEST(PFDFixture, solve2) {
+    istringstream r("4 0\n");
+    ostringstream w;
+    pfd_solve(r, w);
+    ASSERT_EQ("1 2 3 4", w.str());}
 
+TEST(PFDFixture, solve3) {
+    istringstream r("4 2\n1 1 4\n2 1 3\n");
+    ostringstream w;
+    pfd_solve(r, w);
+    ASSERT_EQ("3 2 4 1", w.str());}
 // -----------
 // print_queue
 // -----------
