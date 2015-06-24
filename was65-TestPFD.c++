@@ -33,6 +33,46 @@ TEST(PFDFixture, read3) {
     const pair<int, int> p = pfd_read(s);
     ASSERT_EQ(20, p.first);
     ASSERT_EQ(10, p.second);}
+TEST(PFDFixture, read4) {
+    string s("20 30\n");
+    const pair<int, int> p = pfd_read(s);
+    ASSERT_EQ(20, p.first);
+    ASSERT_EQ(30, p.second);}
+TEST(PFDFixture, read5) {
+    string s("40 39\n");
+    const pair<int, int> p = pfd_read(s);
+    ASSERT_EQ(40, p.first);
+    ASSERT_EQ(39, p.second);}
+TEST(PFDFixture, read6) {
+    string s("29 28\n");
+    const pair<int, int> p = pfd_read(s);
+    ASSERT_EQ(29, p.first);
+    ASSERT_EQ(28, p.second);}
+TEST(PFDFixture, read7) {
+    string s("28 27\n");
+    const pair<int, int> p = pfd_read(s);
+    ASSERT_EQ(28, p.first);
+    ASSERT_EQ(27, p.second);}
+TEST(PFDFixture, read8) {
+    string s("27 26\n");
+    const pair<int, int> p = pfd_read(s);
+    ASSERT_EQ(27, p.first);
+    ASSERT_EQ(26, p.second);}
+TEST(PFDFixture, read9) {
+    string s("26 25\n");
+    const pair<int, int> p = pfd_read(s);
+    ASSERT_EQ(26, p.first);
+    ASSERT_EQ(25, p.second);}
+TEST(PFDFixture, read10) {
+    string s("25 24\n");
+    const pair<int, int> p = pfd_read(s);
+    ASSERT_EQ(25, p.first);
+    ASSERT_EQ(24, p.second);}
+TEST(PFDFixture, read11) {
+    string s("23 22\n");
+    const pair<int, int> p = pfd_read(s);
+    ASSERT_EQ(23, p.first);
+    ASSERT_EQ(22, p.second);}
 
 // ----
 // eval
@@ -64,126 +104,13 @@ TEST(PFDFixture, pfd_eval2) {
     ASSERT_EQ("3 2 4 1 \n", w.str());
 }
 
-
-// -----
-// pfd_buld_graph
-// -----
-
-TEST(PFDFixture, pfd_build_graph) {
+TEST(PFDFixture, pfd_eval3) {
     ostringstream w;
-    string r = "5 4\n3 2 1 5\n2 2 5 3\n4 1 3\n 5 1 1\n";
-    istringstream test1;
-    test1.str(r);
-    pfd_build_graph(test1,w);
-    pfd_print_graph(5,w);
-    ASSERT_EQ(w.str(),"{11111}\n{00101}\n{00000}\n{01010}\n{00000}\n{01100}\n");}
-
-TEST(PFDFixture, pfd_build_graph1) {
-    cleararray();
-    ostringstream x;
-    string r = "4 \0\n";
-    istringstream test2;
-    test2.str(r);
-    pfd_build_graph(test2,x);
-    pfd_print_graph(4,x);
-    ASSERT_EQ("{1111}\n{0000}\n{0000}\n{0000}\n{0000}\n", x.str());}
-TEST(PFDFixture, pfd_build_graph2) {
-    cleararray();
-    ostringstream y;
-    string r = "4 2\n1 1 4\n2 1 3\n";
-    istringstream test3;
-    test3.str(r);
-    pfd_build_graph(test3,y);
-    pfd_print_graph(4,y);
-    ASSERT_EQ("{1111}\n{0000}\n{0000}\n{0100}\n{1000}\n", y.str());}
+    string r = "50 49\n1 1 50\n2 1 1\n3 1 1\n4 1 2\n5 1 2\n6 1 2\n7 1 2\n8 1 3\n9 1 3\n10 1 3\n11 1 3\n12 1 11\n13 1 11\n14 1 11\n15 1 11\n16 1 10\n17 1 10\n18 1 10\n20 1 9\n21 1 9\n22 1 9\n23 1 8\n24 1 8\n25 1 8\n26 1 4\n27 1 5\n28 1 6\n29 1 7\n30 1 8\n31 1 9\n32 1 10\n33 1 11\n34 1 12\n35 1 13\n36 1 4\n37 1 5\n38 1 6\n39 1 7\n40 1 8\n41 1 9\n42 1 9\n42 1 10\n43 1 11\n44 1 12\n45 1 13\n46 1 1\n47 1 1\n48 1 2\n49 1 2\n";
+    istringstream test4;
+    test4.str(r);
+    pfd_eval((pfd_build_graph(test4,w)), w);
+    ASSERT_EQ("19 50 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 \n", w.str());
+}
 
 
-/*
-% ls -al /usr/include/gtest/
-...
-gtest.h
-...
-
-
-
-% locate libgtest.a
-/usr/lib/libgtest.a
-...
-
-
-
-% locate libpthread.a
-...
-/usr/lib32/libpthread.a
-
-
-
-% locate libgtest_main.a
-/usr/lib/libgtest_main.a
-...
-
-
-
-% g++-4.8 -fprofile-arcs -ftest-coverage -pedantic -std=c++11 -Wall Collatz.c++ TestCollatz.c++ -o TestCollatz -lgtest -lgtest_main -lpthread
-
-
-
-% valgrind TestCollatz        >  TestCollatz.out 2>&1
-% gcov-4.8 -b Collatz.c++     >> TestCollatz.out
-% gcov-4.8 -b TestCollatz.c++ >> TestCollatz.out
-
-
-
-% cat TestCollatz.out
-==14225== Memcheck, a memory error detector
-==14225== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
-==14225== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
-==14225== Command: TestCollatz
-==14225==
-Running main() from gtest_main.cc
-[==========] Running 7 tests from 1 test case.
-[----------] Global test environment set-up.
-[----------] 7 tests from Collatz
-[ RUN      ] Collatz.read
-[       OK ] Collatz.read (31 ms)
-[ RUN      ] Collatz.eval_1
-[       OK ] Collatz.eval_1 (5 ms)
-[ RUN      ] Collatz.eval_2
-[       OK ] Collatz.eval_2 (3 ms)
-[ RUN      ] Collatz.eval_3
-[       OK ] Collatz.eval_3 (3 ms)
-[ RUN      ] Collatz.eval_4
-[       OK ] Collatz.eval_4 (3 ms)
-[ RUN      ] Collatz.print
-[       OK ] Collatz.print (17 ms)
-[ RUN      ] Collatz.solve
-[       OK ] Collatz.solve (10 ms)
-[----------] 7 tests from Collatz (88 ms total)
-
-[----------] Global test environment tear-down
-[==========] 7 tests from 1 test case ran. (132 ms total)
-[  PASSED  ] 7 tests.
-==14225==
-==14225== HEAP SUMMARY:
-==14225==     in use at exit: 0 bytes in 0 blocks
-==14225==   total heap usage: 495 allocs, 495 frees, 70,302 bytes allocated
-==14225==
-==14225== All heap blocks were freed -- no leaks are possible
-==14225==
-==14225== For counts of detected and suppressed errors, rerun with: -v
-==14225== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
-File 'Collatz.c++'
-Lines executed:100.00% of 17
-Branches executed:100.00% of 18
-Taken at least once:61.11% of 18
-Calls executed:89.47% of 19
-Creating 'Collatz.c++.gcov'
-...
-File 'TestCollatz.c++'
-Lines executed:100.00% of 26
-Branches executed:57.14% of 224
-Taken at least once:28.57% of 224
-Calls executed:54.07% of 209
-Creating 'TestCollatz.c++.gcov'
-...
-*/
