@@ -1,0 +1,153 @@
+==25872== Memcheck, a memory error detector
+==25872== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==25872== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==25872== Command: ./TestPFD
+==25872== 
+Running main() from gtest_main.cc
+[==========] Running 9 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 9 tests from PFDFixture
+[ RUN      ] PFDFixture.pfd_read1
+[       OK ] PFDFixture.pfd_read1 (19 ms)
+[ RUN      ] PFDFixture.read2
+[       OK ] PFDFixture.read2 (4 ms)
+[ RUN      ] PFDFixture.read3
+[       OK ] PFDFixture.read3 (4 ms)
+[ RUN      ] PFDFixture.pfd_eval
+[       OK ] PFDFixture.pfd_eval (21 ms)
+[ RUN      ] PFDFixture.pfd_eval1
+[       OK ] PFDFixture.pfd_eval1 (5 ms)
+[ RUN      ] PFDFixture.pfd_eval2
+[       OK ] PFDFixture.pfd_eval2 (4 ms)
+[ RUN      ] PFDFixture.pfd_build_graph
+[       OK ] PFDFixture.pfd_build_graph (9 ms)
+[ RUN      ] PFDFixture.pfd_build_graph1
+==25872== Use of uninitialised value of size 8
+==25872==    at 0x406DBA: pfd_build_graph(std::istream&, std::ostream&) (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x40B942: PFDFixture_pfd_build_graph1_Test::TestBody() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x4340C2: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x426ADC: testing::Test::Run() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x426B73: testing::TestInfo::Run() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x426C74: testing::TestCase::Run() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x426EEC: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x4271CD: testing::UnitTest::Run() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x405C7F: main (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872== 
+==25872== Conditional jump or move depends on uninitialised value(s)
+==25872==    at 0x406DD4: pfd_build_graph(std::istream&, std::ostream&) (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x40B942: PFDFixture_pfd_build_graph1_Test::TestBody() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x4340C2: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x426ADC: testing::Test::Run() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x426B73: testing::TestInfo::Run() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x426C74: testing::TestCase::Run() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x426EEC: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x4271CD: testing::UnitTest::Run() (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872==    by 0x405C7F: main (in /v/filer4b/v38q001/imran/cs378-pfd/TestPFD)
+==25872== 
+[       OK ] PFDFixture.pfd_build_graph1 (11 ms)
+[ RUN      ] PFDFixture.pfd_build_graph2
+[       OK ] PFDFixture.pfd_build_graph2 (9 ms)
+[----------] 9 tests from PFDFixture (93 ms total)
+
+[----------] Global test environment tear-down
+[==========] 9 tests from 1 test case ran. (122 ms total)
+[  PASSED  ] 9 tests.
+==25872== 
+==25872== HEAP SUMMARY:
+==25872==     in use at exit: 0 bytes in 0 blocks
+==25872==   total heap usage: 571 allocs, 571 frees, 70,085 bytes allocated
+==25872== 
+==25872== All heap blocks were freed -- no leaks are possible
+==25872== 
+==25872== For counts of detected and suppressed errors, rerun with: -v
+==25872== Use --track-origins=yes to see where uninitialised values come from
+==25872== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+File '/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/iostream'
+Lines executed:100.00% of 1
+No branches
+No calls
+/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/iostream:creating 'iostream.gcov'
+
+File 'PFD.c++'
+Lines executed:95.95% of 74
+Branches executed:100.00% of 54
+Taken at least once:79.63% of 54
+No calls
+PFD.c++:creating 'PFD.c++.gcov'
+
+File '/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/array'
+Lines executed:100.00% of 2
+No branches
+No calls
+/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/array:creating 'array.gcov'
+
+File '/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/bits/stl_pair.h'
+Lines executed:100.00% of 2
+No branches
+No calls
+/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/bits/stl_pair.h:creating 'stl_pair.h.gcov'
+
+File '/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/bits/move.h'
+Lines executed:100.00% of 1
+No branches
+No calls
+/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/bits/move.h:creating 'move.h.gcov'
+
+File '/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/iostream'
+Lines executed:100.00% of 1
+No branches
+No calls
+/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/iostream:creating 'iostream.gcov'
+
+File 'TestPFD.c++'
+Lines executed:100.00% of 64
+Branches executed:66.32% of 285
+Taken at least once:34.74% of 285
+No calls
+TestPFD.c++:creating 'TestPFD.c++.gcov'
+
+File '/usr/include/gtest/gtest.h'
+Lines executed:44.44% of 18
+Branches executed:0.00% of 20
+Taken at least once:0.00% of 20
+No calls
+/usr/include/gtest/gtest.h:creating 'gtest.h.gcov'
+
+File '/usr/include/gtest/gtest-printers.h'
+Lines executed:0.00% of 23
+Branches executed:0.00% of 16
+Taken at least once:0.00% of 16
+No calls
+/usr/include/gtest/gtest-printers.h:creating 'gtest-printers.h.gcov'
+
+File '/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/bits/ios_base.h'
+Lines executed:0.00% of 1
+No branches
+No calls
+/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/bits/ios_base.h:creating 'ios_base.h.gcov'
+
+File '/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/bits/basic_string.h'
+Lines executed:100.00% of 2
+No branches
+No calls
+/usr/bin/../lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/bits/basic_string.h:creating 'basic_string.h.gcov'
+
+File '/usr/include/gtest/internal/gtest-internal.h'
+Lines executed:80.00% of 5
+No branches
+No calls
+/usr/include/gtest/internal/gtest-internal.h:creating 'gtest-internal.h.gcov'
+
+File '/usr/include/gtest/internal/gtest-port.h'
+Lines executed:30.00% of 10
+Branches executed:0.00% of 8
+Taken at least once:0.00% of 8
+No calls
+/usr/include/gtest/internal/gtest-port.h:creating 'gtest-port.h.gcov'
+
+File '/usr/include/gtest/gtest-message.h'
+Lines executed:0.00% of 1
+No branches
+No calls
+/usr/include/gtest/gtest-message.h:creating 'gtest-message.h.gcov'
+
