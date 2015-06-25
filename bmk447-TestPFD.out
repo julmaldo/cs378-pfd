@@ -1,0 +1,415 @@
+==3754== Memcheck, a memory error detector
+==3754== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==3754== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==3754== Command: ./TestPFD
+==3754== 
+Running main() from gtest_main.cc
+[==========] Running 19 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 19 tests from PFDFixture
+[ RUN      ] PFDFixture.read_1
+[       OK ] PFDFixture.read_1 (32 ms)
+[ RUN      ] PFDFixture.read_2
+[       OK ] PFDFixture.read_2 (5 ms)
+[ RUN      ] PFDFixture.read_3
+[       OK ] PFDFixture.read_3 (5 ms)
+[ RUN      ] PFDFixture.read_4
+[       OK ] PFDFixture.read_4 (4 ms)
+[ RUN      ] PFDFixture.print_1
+[       OK ] PFDFixture.print_1 (16 ms)
+[ RUN      ] PFDFixture.print_2
+[       OK ] PFDFixture.print_2 (4 ms)
+[ RUN      ] PFDFixture.print_3
+[       OK ] PFDFixture.print_3 (3 ms)
+[ RUN      ] PFDFixture.print_4
+[       OK ] PFDFixture.print_4 (3 ms)
+[ RUN      ] PFDFixture.pop_1
+[       OK ] PFDFixture.pop_1 (12 ms)
+[ RUN      ] PFDFixture.pop_2
+[       OK ] PFDFixture.pop_2 (12 ms)
+[ RUN      ] PFDFixture.solve_1
+[       OK ] PFDFixture.solve_1 (42 ms)
+[ RUN      ] PFDFixture.solve_2
+[       OK ] PFDFixture.solve_2 (25 ms)
+[ RUN      ] PFDFixture.solve_3
+[       OK ] PFDFixture.solve_3 (8 ms)
+[ RUN      ] PFDFixture.solve_4
+[       OK ] PFDFixture.solve_4 (7 ms)
+[ RUN      ] PFDFixture.solve_5
+[       OK ] PFDFixture.solve_5 (6 ms)
+[ RUN      ] PFDFixture.solve_6
+[       OK ] PFDFixture.solve_6 (9 ms)
+[ RUN      ] PFDFixture.solve_7
+[       OK ] PFDFixture.solve_7 (6 ms)
+[ RUN      ] PFDFixture.solve_8
+[       OK ] PFDFixture.solve_8 (5 ms)
+[ RUN      ] PFDFixture.solve_9
+[       OK ] PFDFixture.solve_9 (5 ms)
+[----------] 19 tests from PFDFixture (227 ms total)
+
+[----------] Global test environment tear-down
+[==========] 19 tests from 1 test case ran. (272 ms total)
+[  PASSED  ] 19 tests.
+==3754== 
+==3754== HEAP SUMMARY:
+==3754==     in use at exit: 0 bytes in 0 blocks
+==3754==   total heap usage: 1,002 allocs, 1,002 frees, 105,061 bytes allocated
+==3754== 
+==3754== All heap blocks were freed -- no leaks are possible
+==3754== 
+==3754== For counts of detected and suppressed errors, rerun with: -v
+==3754== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
+File 'PFD.c++'
+Lines executed:100.00% of 82
+Branches executed:100.00% of 78
+Taken at least once:71.79% of 78
+Calls executed:89.29% of 56
+Creating 'PFD.c++.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/iostream'
+Lines executed:100.00% of 1
+No branches
+Calls executed:100.00% of 2
+Creating 'iostream.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_queue.h'
+Lines executed:95.00% of 20
+Branches executed:100.00% of 2
+Taken at least once:50.00% of 2
+Calls executed:90.91% of 22
+Creating 'stl_queue.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_algobase.h'
+Lines executed:100.00% of 20
+Branches executed:100.00% of 4
+Taken at least once:100.00% of 4
+Calls executed:100.00% of 10
+Creating 'stl_algobase.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_iterator_base_types.h'
+Lines executed:100.00% of 4
+No branches
+Calls executed:100.00% of 1
+Creating 'stl_iterator_base_types.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_iterator.h'
+Lines executed:100.00% of 22
+No branches
+Calls executed:100.00% of 7
+Creating 'stl_iterator.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_uninitialized.h'
+Lines executed:100.00% of 8
+No branches
+Calls executed:100.00% of 6
+Creating 'stl_uninitialized.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/alloc_traits.h'
+Lines executed:100.00% of 12
+No branches
+Calls executed:100.00% of 12
+Creating 'alloc_traits.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/ext/new_allocator.h'
+Lines executed:92.86% of 14
+Branches executed:100.00% of 6
+Taken at least once:50.00% of 6
+Calls executed:87.50% of 8
+Creating 'new_allocator.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_vector.h'
+Lines executed:98.61% of 72
+Branches executed:100.00% of 12
+Taken at least once:66.67% of 12
+Calls executed:95.74% of 47
+Creating 'stl_vector.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/move.h'
+Lines executed:100.00% of 9
+No branches
+Calls executed:100.00% of 3
+Creating 'move.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/allocator.h'
+Lines executed:100.00% of 4
+No branches
+Calls executed:100.00% of 3
+Creating 'allocator.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/vector.tcc'
+Lines executed:80.65% of 31
+Branches executed:38.46% of 26
+Taken at least once:23.08% of 26
+Calls executed:60.00% of 40
+Creating 'vector.tcc.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_function.h'
+Lines executed:100.00% of 2
+No branches
+No calls
+Creating 'stl_function.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_construct.h'
+Lines executed:100.00% of 7
+No branches
+Calls executed:100.00% of 2
+Creating 'stl_construct.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/basic_ios.h'
+Lines executed:0.00% of 4
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 1
+Creating 'basic_ios.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_heap.h'
+Lines executed:83.33% of 54
+Branches executed:84.21% of 38
+Taken at least once:63.16% of 38
+Calls executed:88.46% of 52
+Creating 'stl_heap.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/sstream'
+Lines executed:0.00% of 1
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 5
+Creating 'sstream.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/streambuf'
+No executable lines
+No branches
+No calls
+Removing 'streambuf.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/basic_string.h'
+Lines executed:0.00% of 1
+No branches
+Calls executed:0.00% of 1
+Creating 'basic_string.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/ostream'
+No executable lines
+No branches
+No calls
+Removing 'ostream.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/istream'
+No executable lines
+No branches
+No calls
+Removing 'istream.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_pair.h'
+Lines executed:100.00% of 4
+No branches
+Calls executed:100.00% of 5
+Creating 'stl_pair.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/locale_facets.h'
+Lines executed:0.00% of 5
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 2
+Creating 'locale_facets.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/ios_base.h'
+Lines executed:0.00% of 6
+No branches
+No calls
+Creating 'ios_base.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/ext/atomicity.h'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 3
+Creating 'atomicity.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/x86_64-unknown-linux-gnu/bits/gthr-default.h'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'gthr-default.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/char_traits.h'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'char_traits.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/new'
+Lines executed:100.00% of 2
+No branches
+No calls
+Creating 'new.gcov'
+
+File 'TestPFD.c++'
+Lines executed:100.00% of 106
+Branches executed:69.23% of 598
+Taken at least once:34.78% of 598
+Calls executed:56.96% of 690
+Creating 'TestPFD.c++.gcov'
+
+File '/usr/include/gtest/internal/gtest-internal.h'
+Lines executed:66.67% of 6
+Branches executed:100.00% of 78
+Taken at least once:50.00% of 78
+Calls executed:73.08% of 156
+Creating 'gtest-internal.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/iostream'
+Lines executed:100.00% of 1
+No branches
+Calls executed:100.00% of 2
+Creating 'iostream.gcov'
+
+File '/usr/include/gtest/gtest-printers.h'
+Lines executed:0.00% of 25
+Branches executed:0.00% of 14
+Taken at least once:0.00% of 14
+Calls executed:0.00% of 23
+Creating 'gtest-printers.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/basic_string.h'
+Lines executed:44.44% of 9
+Branches executed:0.00% of 4
+Taken at least once:0.00% of 4
+Calls executed:40.00% of 5
+Creating 'basic_string.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_iterator_base_funcs.h'
+Lines executed:0.00% of 4
+No branches
+Calls executed:0.00% of 2
+Creating 'stl_iterator_base_funcs.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/stl_iterator_base_types.h'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'stl_iterator_base_types.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/ext/type_traits.h'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'type_traits.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/allocator.h'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'allocator.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/sstream'
+Lines executed:0.00% of 1
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 5
+Creating 'sstream.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/basic_string.tcc'
+Lines executed:0.00% of 16
+Branches executed:0.00% of 16
+Taken at least once:0.00% of 16
+Calls executed:0.00% of 19
+Creating 'basic_string.tcc.gcov'
+
+File '/usr/include/gtest/gtest.h'
+Lines executed:61.11% of 18
+Branches executed:24.24% of 66
+Taken at least once:12.12% of 66
+Calls executed:21.37% of 117
+Creating 'gtest.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/basic_ios.h'
+Lines executed:0.00% of 4
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 1
+Creating 'basic_ios.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/streambuf'
+No executable lines
+No branches
+No calls
+Removing 'streambuf.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/ext/new_allocator.h'
+Lines executed:0.00% of 3
+No branches
+No calls
+Creating 'new_allocator.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/istream'
+No executable lines
+No branches
+No calls
+Removing 'istream.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/ostream'
+No executable lines
+No branches
+No calls
+Removing 'ostream.gcov'
+
+File '/usr/include/gtest/internal/gtest-port.h'
+Lines executed:36.36% of 11
+Branches executed:16.67% of 12
+Taken at least once:8.33% of 12
+Calls executed:14.29% of 7
+Creating 'gtest-port.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/iomanip'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'iomanip.gcov'
+
+File '/usr/include/gtest/gtest-message.h'
+Lines executed:0.00% of 4
+Branches executed:0.00% of 4
+Taken at least once:0.00% of 4
+Calls executed:0.00% of 11
+Creating 'gtest-message.h.gcov'
+
+File '/usr/include/gtest/internal/gtest-string.h'
+Lines executed:9.09% of 11
+Branches executed:100.00% of 2
+Taken at least once:100.00% of 2
+Calls executed:20.00% of 5
+Creating 'gtest-string.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/locale_facets.h'
+Lines executed:0.00% of 5
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 2
+Creating 'locale_facets.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/ios_base.h'
+Lines executed:0.00% of 12
+No branches
+No calls
+Creating 'ios_base.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/ext/atomicity.h'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 3
+Creating 'atomicity.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/x86_64-unknown-linux-gnu/bits/gthr-default.h'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'gthr-default.h.gcov'
+
+File '/lusr/opt/gcc-4.8.2/include/c++/4.8.2/bits/char_traits.h'
+Lines executed:0.00% of 4
+No branches
+No calls
+Creating 'char_traits.h.gcov'
+
