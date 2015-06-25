@@ -1,0 +1,198 @@
+        -:    0:Source:PFD.h
+        -:    0:Graph:PFD.gcno
+        -:    0:Data:PFD.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1: 
+        -:    2:#ifndef PFD_h
+        -:    3:#define PFD_h
+        -:    4:
+        -:    5:// --------
+        -:    6:// includes
+        -:    7:// --------
+        -:    8:
+        -:    9:#include <iostream> // istream, ostream
+        -:   10:#include <vector>
+        -:   11:#include <queue>
+        -:   12:
+        -:   13:using namespace std;
+        -:   14:
+        -:   15:// --------
+        -:   16:// classes
+        -:   17:// --------
+        -:   18:
+        -:   19:/**
+        -:   20: * Object the represents the task
+        -:   21: */
+function _ZN6VertexD2Ev called 27 returned 100% blocks executed 100%
+       27:   22:class Vertex
+call    0 returned 100%
+        -:   23:{
+        -:   24:    public:
+        -:   25:        int num; /*!<the number that represents the task */
+        -:   26:        int num_pre; /*!<number of predecessors the vertex has */
+        -:   27:
+        -:   28:        vector<Vertex*> succeeders; /*!<a set of vertices that this vertex points to*/
+        -:   29:
+        -:   30:        /**
+        -:   31:        * Default constructor
+        -:   32:        */
+function _ZN6VertexC2Ev called 27 returned 100% blocks executed 100%
+       27:   33:        Vertex()
+       27:   34:        {
+call    0 returned 100%
+       27:   35:            num_pre = 0;
+       27:   36:        }
+        -:   37:};
+        -:   38:
+        -:   39:/**
+        -:   40: * function object for the comparison in priority queue of verticses with no predecessors
+        -:   41: */
+        -:   42:class Comp_q
+        -:   43:{
+        -:   44:public:
+        -:   45:    
+function _ZN6Comp_qclEP6VertexS1_ called 24 returned 100% blocks executed 100%
+       24:   46:    bool operator()(Vertex* v1, Vertex* v2) 
+        -:   47:    {
+       24:   48:       return v1->num > v2->num;
+        -:   49:    }
+        -:   50:};
+        -:   51:
+        -:   52:/**
+        -:   53: * function object for getting vertex with no predecessors after the initialization
+        -:   54: */
+        -:   55:class Transfer_vertices
+        -:   56:{
+        -:   57:public:
+        -:   58:    priority_queue<Vertex*, vector<Vertex*>, Comp_q>* vertices_no_p; /*!<a pointer to priority queue to hold the queue the verticses get transfered to */
+        -:   59:
+        -:   60:   
+function _ZN17Transfer_verticesC2EPSt14priority_queueIP6VertexSt6vectorIS2_SaIS2_EE6Comp_qE called 6 returned 100% blocks executed 100%
+        6:   61:    Transfer_vertices(priority_queue<Vertex*, vector<Vertex*>, Comp_q>* q)
+        -:   62:    {
+        6:   63:        vertices_no_p = q;
+        6:   64:    }
+        -:   65:
+        -:   66:    /**
+        -:   67:    * Overload operator (function call) for the transfer
+        -:   68:    * @param v a reference to Vertex that might get possible get transferred
+        -:   69:    */
+function _ZN17Transfer_verticesclER6Vertex called 27 returned 100% blocks executed 100%
+       27:   70:    void operator()(Vertex& v) 
+        -:   71:    {
+       27:   72:       if(v.num_pre == 0)
+branch  0 taken 56% (fallthrough)
+branch  1 taken 44%
+        -:   73:        {
+       15:   74:            vertices_no_p->push(&v);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:   75:        }
+       27:   76:    }
+        -:   77:};
+        -:   78:
+        -:   79:/**
+        -:   80: * function object for reducing number of predecessors
+        -:   81: */
+        -:   82:class Remove_predecessors
+        -:   83:{
+        -:   84:public:
+        -:   85:    priority_queue<Vertex*, vector<Vertex*>, Comp_q>* vertices_no_p; /*!<a pointer to priority queue to hold the queue from which the reduction of number of predecessors occurs*/
+        -:   86:
+        -:   87:    /**
+        -:   88:    * Constructor
+        -:   89:    * @param q the priority queue from which the reduction of number of predecessors occurs
+        -:   90:    */
+function _ZN19Remove_predecessorsC2EPSt14priority_queueIP6VertexSt6vectorIS2_SaIS2_EE6Comp_qE called 27 returned 100% blocks executed 100%
+       27:   91:    Remove_predecessors(priority_queue<Vertex*, vector<Vertex*>, Comp_q>* q)
+        -:   92:    {
+       27:   93:        vertices_no_p = q;
+       27:   94:    }
+        -:   95:
+        -:   96:    /**
+        -:   97:    * Overload operator (function call) for the reduction of number of predecessors
+        -:   98:    * @param v a pointer to Vertex whose number of predecessors get reduced
+        -:   99:    */
+function _ZN19Remove_predecessorsclEP6Vertex called 18 returned 100% blocks executed 100%
+       18:  100:    void operator()(Vertex* v) 
+        -:  101:    {
+       18:  102:        if(--(v->num_pre) == 0)
+branch  0 taken 67% (fallthrough)
+branch  1 taken 33%
+        -:  103:        {
+       12:  104:            vertices_no_p->push(v);
+call    0 returned 100%
+        -:  105:        }
+       18:  106:    }
+        -:  107:};
+        -:  108:
+        -:  109:// ---------
+        -:  110:// solve_PFD
+        -:  111:// ---------
+        -:  112:
+        -:  113:/**
+        -:  114:* solve the PFD problem given input and output stream
+        -:  115:* @param r reference to input stream
+        -:  116:* @param w reference to output stream
+        -:  117:*/
+        -:  118: void solve_PFD(istream& r, ostream& w);
+        -:  119:
+        -:  120:
+        -:  121:// ---------
+        -:  122:// read_rules
+        -:  123:// ---------
+        -:  124:
+        -:  125:/**
+        -:  126:* read in the input of rules to construct the desired structure for the vector
+        -:  127:* @param r reference to input stream
+        -:  128:* @param rules_size the number of rules
+        -:  129:* @param vertices vector reference where the construction occurs
+        -:  130:*/
+        -:  131:void read_rules(istream& r, int rules_size, vector<Vertex>& vertices);
+        -:  132:
+        -:  133:// ---------
+        -:  134:// read_rule
+        -:  135:// ---------
+        -:  136:
+        -:  137:/**
+        -:  138:* read in the a single line of rule to construct the desired structure for the vector
+        -:  139:* @param r reference to input stream
+        -:  140:* @param vertices vector reference where the construction occurs
+        -:  141:*/
+        -:  142:void read_rule(istream& r, vector<Vertex>& vertices);
+        -:  143:
+        -:  144:// ---------
+        -:  145:// eval_PFD
+        -:  146:// ---------
+        -:  147:
+        -:  148:/**
+        -:  149:* write the solution out
+        -:  150:* @param vertices reference to vector
+        -:  151:* @param w reference to output stream
+        -:  152:*/
+        -:  153:void eval_PFD (vector<Vertex>& vertices, ostream& w);
+        -:  154:
+        -:  155:// ---------
+        -:  156:// print_vertex
+        -:  157:// ---------
+        -:  158:
+        -:  159:/**
+        -:  160:* print out a number that represents a task
+        -:  161:* @param w reference to output stream
+        -:  162:* @param i an integer number the represents the task
+        -:  163:*/
+        -:  164:void print_vertex (ostream& w, int i);
+        -:  165:
+        -:  166:// ---------
+        -:  167:// solved
+        -:  168:// ---------
+        -:  169:
+        -:  170:/**
+        -:  171:* check if all Vertex in the vector have number of predecessors of 0
+        -:  172:* @param vertices reference to vector
+        -:  173:* @return boolean (if all numbersof predecessors are 0)
+        -:  174:*/
+        -:  175://
+        -:  176:#endif // PFD_h
