@@ -1,82 +1,176 @@
-#ifndef PFD_H
-#define	PFD_H
+ 
+#ifndef PFD_h
+#define PFD_h
 
 // --------
 // includes
 // --------
 
 #include <iostream> // istream, ostream
-#include <queue> // priority queue
-#include <vector> // vector
-#include <cassert> // assert
+#include <vector>
+#include <queue>
 
-// -------
-// structs
-// -------
+using namespace std;
 
-typedef struct node {
-    int name;
-    std::vector<int> edges;
-    bool operator< (const node& rhs) const {
-        if (edges.size() == rhs.edges.size())
-            return name > rhs.name;
-        else return edges.size() > rhs.edges.size();
+// --------
+// classes
+// --------
+
+/**
+ * Object the represents the task
+ */
+class Vertex
+{
+    public:
+        int num; /*!<the number that represents the task */
+        int num_pre; /*!<number of predecessors the vertex has */
+
+        vector<Vertex*> succeeders; /*!<a set of vertices that this vertex points to*/
+
+        /**
+        * Default constructor
+        */
+        Vertex()
+        {
+            num_pre = 0;
+        }
+};
+
+/**
+ * function object for the comparison in priority queue of verticses with no predecessors
+ */
+class Comp_q
+{
+public:
+    
+    bool operator()(Vertex* v1, Vertex* v2) 
+    {
+       return v1->num > v2->num;
     }
 };
 
-// --------
-// PFD_read
-// --------
+/**
+ * function object for getting vertex with no predecessors after the initialization
+ */
+class Transfer_vertices
+{
+public:
+    priority_queue<Vertex*, vector<Vertex*>, Comp_q>* vertices_no_p; /*!<a pointer to priority queue to hold the queue the verticses get transfered to */
+
+   
+    Transfer_vertices(priority_queue<Vertex*, vector<Vertex*>, Comp_q>* q)
+    {
+        vertices_no_p = q;
+    }
+
+    /**
+    * Overload operator (function call) for the transfer
+    * @param v a reference to Vertex that might get possible get transferred
+    */
+    void operator()(Vertex& v) 
+    {
+       if(v.num_pre == 0)
+        {
+            vertices_no_p->push(&v);
+        }
+    }
+};
 
 /**
-* reads input into individual nodes
-* @param input a std::istream 
-* @param nodes a std::vector<node> by reference
-*/
-void PFD_read (std::istream&, std::vector<node>&);
+ * function object for reducing number of predecessors
+ */
+class Remove_predecessors
+{
+public:
+    priority_queue<Vertex*, vector<Vertex*>, Comp_q>* vertices_no_p; /*!<a pointer to priority queue to hold the queue from which the reduction of number of predecessors occurs*/
+
+    /**
+    * Constructor
+    * @param q the priority queue from which the reduction of number of predecessors occurs
+    */
+    Remove_predecessors(priority_queue<Vertex*, vector<Vertex*>, Comp_q>* q)
+    {
+        vertices_no_p = q;
+    }
+
+    /**
+    * Overload operator (function call) for the reduction of number of predecessors
+    * @param v a pointer to Vertex whose number of predecessors get reduced
+    */
+    void operator()(Vertex* v) 
+    {
+        if(--(v->num_pre) == 0)
+        {
+            vertices_no_p->push(v);
+        }
+    }
+};
 
 // ---------
-// PFD_check
-// ---------
-
-/**
-* verifies that all nodes are accounted for
-* @param nodes a std::vector<node> by reference
-* @param num_of_tasks the number of tasks given
-*/
-void PFD_check (std::vector<node>&, int);
-
-// ----------
-// PFD_update
-// ----------
-
-/**
-* updates priority queue after element is popped
-* @param nodes a std::priority_queue<node>
-* @param edge the edge to be removed
-*/
-void PFD_update (std::priority_queue<node>&, int);
-
-// ---------
-// PFD_print
-// ---------
-
-/**
-* prints the nodes in order of priority
-* @param output a std::ostream
-* @param nodes a std::priority_queue<node>
-*/
-void PFD_print (std::ostream&, std::priority_queue<node>);
-
-// ---------
-// PFD_solve
+// solve_PFD
 // ---------
 
 /**
-* read, prioritize, print result
-* @param r a std::istream
-* @param w a std::ostream
+* solve the PFD problem given input and output stream
+* @param r reference to input stream
+* @param w reference to output stream
 */
-void PFD_solve (std::istream&, std::ostream&);
+ void solve_PFD(istream& r, ostream& w);
 
-#endif	// PFD_H
+
+// ---------
+// read_rules
+// ---------
+
+/**
+* read in the input of rules to construct the desired structure for the vector
+* @param r reference to input stream
+* @param rules_size the number of rules
+* @param vertices vector reference where the construction occurs
+*/
+void read_rules(istream& r, int rules_size, vector<Vertex>& vertices);
+
+// ---------
+// read_rule
+// ---------
+
+/**
+* read in the a single line of rule to construct the desired structure for the vector
+* @param r reference to input stream
+* @param vertices vector reference where the construction occurs
+*/
+void read_rule(istream& r, vector<Vertex>& vertices);
+
+// ---------
+// eval_PFD
+// ---------
+
+/**
+* write the solution out
+* @param vertices reference to vector
+* @param w reference to output stream
+*/
+void eval_PFD (vector<Vertex>& vertices, ostream& w);
+
+// ---------
+// print_vertex
+// ---------
+
+/**
+* print out a number that represents a task
+* @param w reference to output stream
+* @param i an integer number the represents the task
+*/
+void print_vertex (ostream& w, int i);
+
+// ---------
+// solved
+// ---------
+
+/**
+* check if all Vertex in the vector have number of predecessors of 0
+* @param vertices reference to vector
+* @return boolean (if all numbersof predecessors are 0)
+*/
+//
+#endif // PFD_h
