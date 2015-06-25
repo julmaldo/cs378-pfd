@@ -1,4 +1,3 @@
-
 #include <iostream> // cout, endl
 #include <sstream>  // istringtstream, ostringstream
 #include <string>   // string
@@ -59,26 +58,3 @@ TEST(PFDFixture, solve_6)
     solve_PFD(r, w);
     ASSERT_EQ("1 2 3 4 5 ", w.str());
 }
-// ----
-// PFD_print
-// ---
-TEST(PFDFixture, print_1) {
-    ostringstream w;
-    int i = 27;
-    print_vertex(w, i);
-    ASSERT_EQ("27 ", w.str());}
-TEST(PFDFixture, print_2) {
-    ostringstream w;
-    int i = 27;
-    print_vertex(w, i);
-    ASSERT_EQ("27 ", w.str());}
-TEST(PFDFixture, print_3) {
-    ostringstream w;
-    int i = 27;
-   print_vertex(w, i);
-    ASSERT_EQ("27 ", w.str());}
-TEST(PFDFixture, print_4) {
-    ostringstream w;
-    int i = 27;
-    print_vertex(w, i);
-    ASSERT_EQ("27 ", w.str());}

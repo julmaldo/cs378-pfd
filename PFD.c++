@@ -1,9 +1,3 @@
-
-
-// --------
-// includes
-// --------
-
 #include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
 #include <vector>
@@ -15,33 +9,61 @@
 
 using namespace std;
 
+
+/*
+void PFD_solve (std::istream& input, std::ostream& output) {
+    std::vector<node> nodes;
+    PFD_read(input, nodes);
+    
+    std::priority_queue<node> sorted_nodes(nodes.begin(), nodes.end());
+    
+    PFD_print(output, sorted_nodes);
+*/
   void solve_PFD(istream& r, ostream& w)
 {
     assert(r != NULL);
     assert(w != NULL);
 
-    int task_size, rules_size;
-    r >> task_size;
-    r >> rules_size;
-
-    assert(task_size > 0);
-    assert(task_size <= 100);
-    assert(rules_size >= 0);
-   // assert(rules_size < task_size);
-
-    //create a vector of Verticses, each vertex represents a task
-    vector<Vertex> vertices(task_size);
-    //assign the corresponding number the Vertices represent
-    for(int i = 0, j = 1; i < (int)vertices.size(); ++i, ++j)
+    int t_size, r_size;
+    r >> t_size;
+    r >> r_size;
+   
+    vector<Vertex> vertices(t_size);
+    
+    for(int a = 0, b = 1; a < (int)vertices.size(); ++a, ++b)
     {
-        vertices[i].num = j;
+        vertices[a].number = b;
     }
 
-    read_rules(r, rules_size, vertices);
+    read_PFD(r, r_size, vertices);
 
     eval_PFD(vertices, w);
 }
- void read_rules(istream& r, int rules_size, vector<Vertex>& vertices)
+
+/*void PFD_read (std::istream& input, std::vector<node>& nodes) {
+    int num_of_tasks, num_of_rules, num_of_edges;
+  input >> num_of_tasks;
+    input >> num_of_rules;
+    assert(num_of_tasks > 0);
+    
+    for (int i = 0; i < num_of_rules; i++) {
+        node temp;
+       input >> temp.name;
+               input >> num_of_edges;
+        for (int j = 0; j < num_of_edges; j++) {
+           int edge;
+            input >> edge;
+           temp.edges.push_back(edge);
+        }
+        */
+ void read_PFD(istream& r, int r_size, vector<Vertex>& vertices)
+{
+    while(r_size-- != 0)
+    {
+        readHelper(r, vertices);
+    }
+}
+/*void read_rules(istream& r, int rules_size, vector<Vertex>& vertices)
 {
     assert(r != NULL);
     assert(rules_size >= 0);
@@ -53,25 +75,14 @@ using namespace std;
     {
         read_rule(r, vertices);
     }
-}
-
- void read_rule(istream& r, vector<Vertex>& vertices)
+}*/
+ void readHelper(istream& r, vector<Vertex>& vertices)
 {
-    assert(r != NULL);
-    assert(!vertices.empty());
-    assert(vertices.size() <= 100);
-
+   
     int index, predecessors_size, predecessor;
 
-    r >> index;
-    r >> predecessors_size;
-
-    assert(index > 0);
-    assert(index <= 100);
-    assert(predecessors_size >= 0);
-    assert(predecessors_size < 100);
-
-    vertices[index-1].num_pre = predecessors_size;
+    r >> index; r >> predecessors_size;
+    vertices[index-1].number_previous = predecessors_size;
 
     while(predecessors_size-- != 0)
     {
@@ -82,12 +93,11 @@ using namespace std;
 
 inline bool solved(vector<Vertex>& vertices)
 {
-    assert(!vertices.empty());
-    assert(vertices.size() <= 100);
+    
 
-    for(int i = 0; i < (int)vertices.size(); ++i)
+    for(int a = 0; a < (int)vertices.size(); ++a)
     {
-        if(vertices[i].num_pre != 0)
+        if(vertices[a].number_previous != 0)
         {
             return false;
         }
@@ -97,40 +107,40 @@ inline bool solved(vector<Vertex>& vertices)
 
  void eval_PFD (vector<Vertex>& vertices, ostream& w)
 {
-    assert(w != NULL);
-    assert(!vertices.empty());
-    assert(vertices.size() <= 100);
+   
+   
+    priority_queue<Vertex*, vector<Vertex*>, Compare> vertices_no_p;
 
-    //priority queue for verticses with no predecessors (cache)
-    priority_queue<Vertex*, vector<Vertex*>, Comp_q> vertices_no_p;
-
-    //push the Vertices with no predecessors to the cache
-    for_each(vertices.begin(), vertices.end(), Transfer_vertices(&vertices_no_p));
     
-    assert(!vertices_no_p.empty()); //the problem is solvable
-
-    int vertex;
+    for_each(vertices.begin(), vertices.end(), Trans_verts(&vertices_no_p));
+    
+    int vert;
     vector<Vertex*>* succeeders;
-    while(!vertices_no_p.empty()) //print task with no predecessor one by one
-    {
-        vertex = vertices_no_p.top()->num;
+    while(!vertices_no_p.empty()) 
+   {
+        vert = vertices_no_p.top()->number;
         succeeders = &(vertices_no_p.top()->succeeders);
         
-        print_vertex(w, vertex);
+        print_PFD(w, vert);
         
         vertices_no_p.pop();
 
-        //decreases the number of predecessors of all succeeders by 1 and push it to the queue of vertices with no predecessors if number of predecessors reach 0
+      /*
+      while (!nodes.empty()) {
+        top = nodes.top().name;
+        output << top << " ";
+        nodes.pop();
+        if (nodes.size() != 0)
+            PFD_update(nodes, top);
+      */
         for_each(succeeders->begin(), succeeders->end(), Remove_predecessors(&vertices_no_p));
     }
 
-    assert(solved(vertices)); //all tasks have been displayed (test if all tasks have no predecessor)
 }
-
- void print_vertex (ostream& w, int i) 
+ void print_PFD (ostream& w, int i) 
 {
     assert(i > 0);
     assert(i <= 100);
     w << i << " ";
-}
+} 
 
