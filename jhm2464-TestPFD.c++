@@ -28,42 +28,6 @@ using namespace std;
 // -----------
 
 
-TEST(PFDFixture, split) {
-    string s("Split me up.");
-    vector<string> result = pfd_split(s, ' ');
-    // ASSERT_THAT(result, ElementsAre("Split", "me", "up."));
-    ASSERT_EQ(result.size(), 3);
-    ASSERT_EQ(result[0], "Split");
-    ASSERT_EQ(result[1], "me");
-    ASSERT_EQ(result[2], "up.");
-}
-
-TEST(PFDFixture, split1) {
-    string s("1 2 3 4");
-    vector<string> result = pfd_split(s, ' ');
-    // ASSERT_THAT(result, ElementsAre("1", "2", "3", "4"));
-    ASSERT_EQ(result.size(), 4);
-    ASSERT_EQ(result[0], "1");
-    ASSERT_EQ(result[1], "2");
-    ASSERT_EQ(result[2], "3");
-    ASSERT_EQ(result[3], "4");
-}
-
-TEST(PFDFixture, split2) {
-    string s("1 2 3 4 5 6 7");
-    vector<string> result = pfd_split(s, ' ');
-    // ASSERT_THAT(result, ElementsAre("1", "2", "3", "4"));
-    ASSERT_EQ(result.size(), 7);
-    ASSERT_EQ(result[0], "1");
-    ASSERT_EQ(result[1], "2");
-    ASSERT_EQ(result[2], "3");
-    ASSERT_EQ(result[3], "4");
-    ASSERT_EQ(result[4], "5");
-    ASSERT_EQ(result[5], "6");
-    ASSERT_EQ(result[6], "7");
-}
-
-
 
 // ----
 // pfd_initialize_adjacency_list
@@ -74,7 +38,7 @@ TEST(PFDFixture, initialize) {
     vector<int> pre(4);
     vector<vector<int>> suc(4);
 
-    pfd_initialize_adjacency_list(pre, suc, r);
+    pfd_initialize_adjacency_list(pre, suc, r, 2);
 
     // ASSERT_THAT( pre[1], ElementsAre(1, 2));
     // ASSERT_THAT( pre[2], ElementsAre(1, 2, 3));
@@ -96,7 +60,7 @@ TEST(PFDFixture, initialize1) {
     vector<int> pre(5);
     vector<vector<int>> suc(5);
 
-    pfd_initialize_adjacency_list(pre, suc, r);
+    pfd_initialize_adjacency_list(pre, suc, r, 1);
 
     // ASSERT_THAT( pre[1], ElementsAre(1, 2));
     // ASSERT_THAT( pre[2], ElementsAre(1, 2, 3));
@@ -120,7 +84,7 @@ TEST(PFDFixture, initialize2) {
     vector<int> pre(5);
     vector<vector<int>> suc(5);
 
-    pfd_initialize_adjacency_list(pre, suc, r);
+    pfd_initialize_adjacency_list(pre, suc, r, 2);
 
     // ASSERT_THAT( pre[1], ElementsAre(1, 2));
     // ASSERT_THAT( pre[2], ElementsAre(1, 2, 3));
