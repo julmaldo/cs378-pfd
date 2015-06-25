@@ -3,7 +3,7 @@
     #define NDEBUG
 #endif
 
-#define TEST_SIZE 1
+#define T_SIZE 1
 
 // --------
 // includes
@@ -25,7 +25,7 @@ using namespace std;
 
 int main () {
     
-    int test_size = TEST_SIZE;
+    int test_size = T_SIZE;
 
     while(test_size-- != 0)
     {
