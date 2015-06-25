@@ -1,0 +1,65 @@
+commit 5fac667ad60efa961fcdf3b58aa0ce3e02de2816
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Thu Jun 25 01:26:20 2015 -0500
+
+    final
+
+commit 345d7c004c7f5f2bf1743dd1616f065002058747
+Merge: 6eed8bd 5c443ef
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Wed Jun 24 22:00:45 2015 -0500
+
+    Merge https://github.com/julmaldo/cs378-pfd into Dev_branch
+    
+    ` the commit.
+
+commit 6eed8bd08df26c6cb4741281cd3dea50e0df441e
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Wed Jun 24 21:42:05 2015 -0500
+
+    more tests
+
+commit 5c443efd3fce58af6df4dd4e46e1effa04e758f0
+Merge: fb8223a 8f231b5
+Author: https://github.com/sophieher/collatz-problem/blob/cs-machine/Collatz.py <julio.a.maldo@gmail.com>
+Date:   Wed Jun 24 21:32:21 2015 -0500
+
+    Merge pull request #21 from julmaldo/Dev_branch
+    
+    Dev branch
+
+commit 8f231b575f8549f6fb3d10d39151f0d20f58d214
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Wed Jun 24 21:30:58 2015 -0500
+
+    without gcov tests
+
+commit df9ec1e046aea660c450c00e7be2b8ab9248ec49
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Wed Jun 24 21:19:41 2015 -0500
+
+    finally fixed bug
+
+commit 98b7ce9cb50c7b8074f7cee5f7a53998141ec32e
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Tue Jun 23 22:35:17 2015 -0500
+
+    tests broken
+
+commit 9dcc77dfba47c332610b44b0c0bedcec6e07368d
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Tue Jun 23 18:06:52 2015 -0500
+
+    added pfd.h
+
+commit 725f05dd194e53bb9f868defb247397727c8a95f
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Tue Jun 23 17:47:57 2015 -0500
+
+    first commit
+
+commit fb8223a9ec6c3750bbcc7b9a1c649247c4314f27
+Author: Julmaldo <julio.a.maldo@gmail.com>
+Date:   Mon Jun 22 23:12:35 2015 -0500
+
+    first commit
